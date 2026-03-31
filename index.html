@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tanjila ❤️</title>
+
+<style>
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+body{
+  background: radial-gradient(circle at top, #0b0c2a, #000);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ===== ROTATE MESSAGE ===== */
+.rotate-msg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  z-index:9999;
+  font-size:20px;
+}
+@media (orientation: landscape){
+  .rotate-msg{ display:none; }
+}
+
+/* ===== STARS ===== */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url('https://i.ibb.co/6yNKg6C/stars.png');
+  animation: moveStars 100s linear infinite;
+  z-index:-1;
+}
+@keyframes moveStars{
+  from{background-position:0 0;}
+  to{background-position:10000px 5000px;}
+}
+
+/* ===== MOON ===== */
+.moon{
+  position:absolute;
+  top:50px;
+  right:50px;
+  width:100px;
+  height:100px;
+  background:radial-gradient(circle,#fff,#ccc);
+  border-radius:50%;
+  box-shadow:0 0 40px #fff;
+}
+
+/* ===== SECTION ===== */
+section{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+/* ===== TITLE ===== */
+h1{
+  font-size:40px;
+  color:#ff4da6;
+  text-shadow:0 0 20px #ff4da6;
+}
+.typing{
+  font-size:20px;
+  margin-top:20px;
+  border-right:2px solid #fff;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+/* ===== BUTTON ===== */
+button{
+  margin-top:30px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff4da6,#ff0066);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 0 20px #ff4da6;
+}
+
+/* ===== HEARTS ===== */
+.heart{
+  position:absolute;
+  color:#ff4da6;
+  animation: float 5s linear forwards;
+}
+@keyframes float{
+  0%{transform:translateY(0); opacity:1;}
+  100%{transform:translateY(-300px); opacity:0;}
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+}
+.gallery img{
+  width:200px;
+  border-radius:15px;
+  box-shadow:0 0 15px #ff4da6;
+}
+
+/* ===== FINAL ===== */
+.final{
+  font-size:22px;
+  line-height:1.6;
+}
+
+/* ===== MUSIC BUTTON ===== */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  padding:10px;
+  border-radius:50%;
+  background:#ff4da6;
+}
+
+/* ===== FIREWORK CANVAS ===== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="rotate-msg">📱 Please rotate your device for best experience</div>
+<div class="stars"></div>
+<div class="moon"></div>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🔊</button>
+
+<canvas id="fireworks"></canvas>
+
+<!-- ===== WELCOME ===== -->
+<section>
+  <h1>Happy Birthday 🎂</h1>
+  <h1>Tanjila Sarkar ❤️</h1>
+  <div class="typing" id="typing"></div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section>
+  <h1>Our Memories 💕</h1>
+  <div class="gallery">
+    <img src="https://picsum.photos/200/300?1">
+    <img src="https://picsum.photos/200/300?2">
+    <img src="https://picsum.photos/200/300?3">
+  </div>
+</section>
+
+<!-- ===== MESSAGE ===== -->
+<section>
+  <h1>For You 💌</h1>
+  <p>
+    You are the most beautiful part of my life...  
+    Every moment with you feels like magic ✨  
+    I don't just love you... I feel lucky to have you.  
+  </p>
+</section>
+
+<!-- ===== SURPRISE ===== -->
+<section>
+  <h1>Click for Surprise 🎁</h1>
+  <button onclick="reveal()">Reveal</button>
+  <p id="secret" style="display:none; margin-top:20px;">
+    I love you more than anything in this world ❤️  
+  </p>
+</section>
+
+<!-- ===== FINAL ===== -->
+<section>
+  <h1>Final Message 💖</h1>
+  <p class="final">
+    On this special day, I just want to say...  
+    You are my happiness, my peace, my everything.  
+    Happy Birthday, my love ❤️  
+  </p>
+</section>
+
+<script>
+/* ===== TYPING EFFECT ===== */
+const text = "You are my moon in the darkest night 🌙";
+let i = 0;
+function typing(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 50);
+  }
+}
+typing();
+
+/* ===== MUSIC ===== */
+const music = document.getElementById("music");
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
+}
+
+/* ===== HEART CLICK EFFECT ===== */
+document.addEventListener("click", function(e){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = e.clientX + "px";
+  heart.style.top = e.clientY + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),5000);
+});
+
+/* ===== REVEAL ===== */
+function reveal(){
+  document.getElementById("secret").style.display="block";
+}
+
+/* ===== FIREWORKS ===== */
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework(){
+  for(let i=0;i<50;i++){
+    particles.push({
+      x: canvas.width/2,
+      y: canvas.height/2,
+      dx:(Math.random()-0.5)*5,
+      dy:(Math.random()-0.5)*5,
+      life:100
+    });
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach((p,index)=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
+    p.life--;
+
+    ctx.fillStyle="pink";
+    ctx.fillRect(p.x,p.y,2,2);
+
+    if(p.life<=0){
+      particles.splice(index,1);
+    }
+  });
+
+  requestAnimationFrame(animate);
+}
+
+setInterval(createFirework,2000);
+animate();
+</script>
+
+</body>
+</html>

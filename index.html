@@ -1,299 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Tanjila ❤️</title>
-
-<style>
-/* ===== GLOBAL ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-body{
-  background: radial-gradient(circle at top, #0b0c2a, #000);
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* ===== ROTATE MESSAGE ===== */
-.rotate-msg{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#000;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  z-index:9999;
-  font-size:20px;
-}
-@media (orientation: landscape){
-  .rotate-msg{ display:none; }
-}
-
-/* ===== STARS ===== */
-.stars{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:url('https://i.ibb.co/6yNKg6C/stars.png');
-  animation: moveStars 100s linear infinite;
-  z-index:-1;
-}
-@keyframes moveStars{
-  from{background-position:0 0;}
-  to{background-position:10000px 5000px;}
-}
-
-/* ===== MOON ===== */
-.moon{
-  position:absolute;
-  top:50px;
-  right:50px;
-  width:100px;
-  height:100px;
-  background:radial-gradient(circle,#fff,#ccc);
-  border-radius:50%;
-  box-shadow:0 0 40px #fff;
-}
-
-/* ===== SECTION ===== */
-section{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-}
-
-/* ===== TITLE ===== */
-h1{
-  font-size:40px;
-  color:#ff4da6;
-  text-shadow:0 0 20px #ff4da6;
-}
-.typing{
-  font-size:20px;
-  margin-top:20px;
-  border-right:2px solid #fff;
-  white-space:nowrap;
-  overflow:hidden;
-}
-
-/* ===== BUTTON ===== */
-button{
-  margin-top:30px;
-  padding:12px 25px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(45deg,#ff4da6,#ff0066);
-  color:#fff;
-  cursor:pointer;
-  box-shadow:0 0 20px #ff4da6;
-}
-
-/* ===== HEARTS ===== */
-.heart{
-  position:absolute;
-  color:#ff4da6;
-  animation: float 5s linear forwards;
-}
-@keyframes float{
-  0%{transform:translateY(0); opacity:1;}
-  100%{transform:translateY(-300px); opacity:0;}
-}
-
-/* ===== GALLERY ===== */
-.gallery{
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-}
-.gallery img{
-  width:200px;
-  border-radius:15px;
-  box-shadow:0 0 15px #ff4da6;
-}
-
-/* ===== FINAL ===== */
-.final{
-  font-size:22px;
-  line-height:1.6;
-}
-
-/* ===== MUSIC BUTTON ===== */
-.music-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  padding:10px;
-  border-radius:50%;
-  background:#ff4da6;
-}
-
-/* ===== FIREWORK CANVAS ===== */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  pointer-events:none;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Tanjila Sarkar 🌙❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #ff69b4;
+            --accent: #00f7ff;
+            --glow: #ffd700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: #0a001f;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Background Canvas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+        }
+        
+        .moon {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, #fffbe6, #f4c430);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 80px 40px #ffd700,
+                0 0 140px 80px rgba(255, 215, 0, 0.3);
+            animation: moon-glow 8s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes moon-glow {
+            0%, 100% { box-shadow: 0 0 80px 40px #ffd700, 0 0 140px 80px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 100px 60px #ffd700, 0 0 180px 100px rgba(255, 215, 0, 0.5); }
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 90%;
+        }
+        
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: #fff;
+            text-shadow: 
+                0 0 20px var(--primary),
+                0 0 40px var(--primary),
+                0 0 60px var(--accent);
+            margin-bottom: 1rem;
+            animation: title-glow 3s ease-in-out infinite alternate;
+        }
+        
+        .typing {
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            color: #ffd700;
+            min-height: 3.5rem;
+            margin: 1rem 0;
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 1rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ff69b4;
+            text-shadow: 0 0 30px #ff69b4;
+        }
+        
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(10, 0, 31, 0.85);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 2px solid #ff69b4;
+        }
+        
+        .music-player button {
+            background: none;
+            border: none;
+            color: #ffd700;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .music-player button:hover {
+            transform: scale(1.2);
+            color: #ff69b4;
+        }
+        
+        /* Gallery */
+        .gallery-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            scrollbar-width: none;
+        }
+        
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .gallery-card {
+            min-width: 320px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #1a0033;
+        }
+        
+        .gallery-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 0 60px rgba(0, 247, 255, 0.6);
+        }
+        
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff69b4;
+            pointer-events: none;
+            animation: floatHeart 4s linear forwards;
+            z-index: 9999;
+            text-shadow: 0 0 15px #ff69b4;
+        }
+        
+        @keyframes floatHeart {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(0.3); opacity: 0; }
+        }
+        
+        /* Typing animation */
+        .cursor {
+            animation: blink 0.7s step-end infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Responsive rotate message */
+        .rotate-notice {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 0, 31, 0.95);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #ffd700;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Fireworks canvas */
+        #fireworks-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: none;
+            display: none;
+        }
+        
+        /* Button glow */
+        .glow-btn {
+            transition: all 0.4s;
+            box-shadow: 0 0 25px #ff69b4;
+        }
+        
+        .glow-btn:hover {
+            box-shadow: 0 0 45px #00f7ff, 0 0 70px #ff69b4;
+            transform: translateY(-4px);
+        }
+        
+        /* Final message */
+        .final-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            line-height: 1.3;
+            text-align: center;
+            color: #ffd700;
+            text-shadow: 0 0 40px #ff69b4;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
 
-<div class="rotate-msg">📱 Please rotate your device for best experience</div>
-<div class="stars"></div>
-<div class="moon"></div>
+    <!-- Music Player -->
+    <div class="music-player" id="music-player">
+        <span style="font-size: 1.4rem;">🎵</span>
+        <div style="font-size: 1rem; color: #ffd700; white-space: nowrap;">Our Love Song</div>
+        <button id="play-btn">▶️</button>
+        <button id="mute-btn" style="display: none;">🔇</button>
+        <audio id="bg-music" loop>
+            <!-- Free royalty-free romantic piano track. Replace src with your personal song if you want! -->
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-</audio>
+    <!-- Rotate Device Notice (Mobile Portrait) -->
+    <div class="rotate-notice" id="rotate-notice">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">📱</div>
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">For the most magical experience...</h2>
+        <p style="font-size: 1.4rem; max-width: 420px;">Please rotate your device to landscape mode 🌙</p>
+        <div style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.8;">(You can still enjoy in portrait, but fireworks look best in landscape!)</div>
+    </div>
 
-<button class="music-btn" onclick="toggleMusic()">🔊</button>
+    <!-- HERO / WELCOME -->
+    <section class="hero" id="hero">
+        <div class="moon"></div>
+        <div class="hero-content">
+            <div style="font-size: 1.4rem; letter-spacing: 8px; opacity: 0.9; margin-bottom: 1rem; color: #00f7ff;">✨ TONIGHT THE STARS CELEBRATE ✨</div>
+            <h1>Tanjila Sarkar</h1>
+            
+            <!-- Typing Effect -->
+            <div class="typing" id="typing-text"></div>
+            
+            <p style="font-size: 1.6rem; max-width: 600px; margin: 2rem auto; opacity: 0.95; line-height: 1.6;">
+                My love, my moon, my entire sky...<br>
+                Happy Birthday, my forever ✨
+            </p>
+            
+            <button onclick="scrollToSection('memories')" 
+                    class="glow-btn px-10 py-4 text-2xl rounded-3xl bg-gradient-to-r from-pink-500 to-cyan-400 text-white font-medium mt-6 flex items-center gap-3 mx-auto hover:scale-110 transition-all">
+                ✨ Begin the Magic ✨
+                <span style="font-size: 2rem;">↓</span>
+            </button>
+            
+            <div style="margin-top: 4rem; font-size: 1.1rem; opacity: 0.7; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <div onclick="createHearts(25)" class="cursor-pointer flex items-center gap-2 bg-white/10 px-6 py-3 rounded-3xl backdrop-blur-md">
+                    💖 Tap for hearts
+                </div>
+                <div class="text-sm flex items-center">Made with endless love by Rohim</div>
+            </div>
+        </div>
+    </section>
 
-<canvas id="fireworks"></canvas>
+    <!-- MEMORIES / MESSAGE SECTION -->
+    <section id="memories" style="background: linear-gradient(to bottom, #0a001f, #1a0033);">
+        <h2 class="section-title">Our Story in the Stars</h2>
+        <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            
+            <div style="background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 24px; border: 1px solid rgba(255,105,180,0.3);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🌙</div>
+                <p style="line-height: 1.9; font-size: 1.3rem;">
+                    Tanjila, from the very first moment your smile lit up my world, I knew you were the moon to my night sky. 
+                    You make every ordinary day feel like a cosmic celebration.
+                </p>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 24px; border: 1px solid rgba(255,105,180,0.3);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">❤️</div>
+                <p style="line-height: 1.9; font-size: 1.3rem;">
+                    Your laugh is my favorite melody. Your touch is the spark that sets my heart on fire. 
+                    Thank you for choosing me to share this beautiful life with.
+                </p>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.08); padding: 2rem; border-radius: 24px; border: 1px solid rgba(255,105,180,0.3);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+                <p style="line-height: 1.9; font-size: 1.3rem;">
+                    Today, the universe pauses just to celebrate you — the most radiant, kind, and breathtaking soul I have ever known. 
+                    I am endlessly grateful to call you mine.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== WELCOME ===== -->
-<section>
-  <h1>Happy Birthday 🎂</h1>
-  <h1>Tanjila Sarkar ❤️</h1>
-  <div class="typing" id="typing"></div>
-</section>
+    <!-- PHOTO GALLERY -->
+    <section id="gallery" style="background: #1a0033;">
+        <h2 class="section-title">Our Beautiful Moments</h2>
+        
+        <div class="gallery-container">
+            <div class="carousel" id="carousel">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+            <button onclick="prevSlide()" class="px-8 py-3 text-xl bg-white/10 hover:bg-white/20 rounded-3xl transition-all">← Previous</button>
+            <button onclick="nextSlide()" class="px-8 py-3 text-xl bg-white/10 hover:bg-white/20 rounded-3xl transition-all">Next →</button>
+        </div>
+    </section>
 
-<!-- ===== GALLERY ===== -->
-<section>
-  <h1>Our Memories 💕</h1>
-  <div class="gallery">
-    <img src="https://picsum.photos/200/300?1">
-    <img src="https://picsum.photos/200/300?2">
-    <img src="https://picsum.photos/200/300?3">
-  </div>
-</section>
+    <!-- INTERACTIVE SURPRISE -->
+    <section id="surprise" style="background: linear-gradient(to bottom, #1a0033, #0a001f); text-align: center;">
+        <h2 class="section-title">A Secret Just for You</h2>
+        <div style="max-width: 620px; margin: 0 auto;">
+            <p style="font-size: 1.5rem; margin-bottom: 3rem; opacity: 0.9;">
+                Tanjila, click the button below and watch the sky explode with love just for you...
+            </p>
+            
+            <button onclick="revealSurprise()" 
+                    class="glow-btn text-4xl px-16 py-8 rounded-3xl bg-gradient-to-r from-[#ff69b4] to-[#00f7ff] text-white font-bold flex items-center gap-4 mx-auto">
+                <span>💖 REVEAL MY HEART 💖</span>
+            </button>
+            
+            <!-- Hidden Message -->
+            <div id="hidden-message" style="display: none; margin-top: 4rem; padding: 3rem; background: rgba(255,215,0,0.1); border-radius: 30px; border: 3px dashed #ffd700;">
+                <h3 style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: #ffd700; margin-bottom: 1rem;">My dearest Tanjila,</h3>
+                <p style="font-size: 1.6rem; line-height: 1.8; max-width: 500px; margin: 0 auto;">
+                    You are my wish upon every star. You are the reason my heart beats in rhythm with the universe. 
+                    I promise to love you more with every passing birthday. 
+                    <br><br>
+                    Forever yours,<br>
+                    <span style="color:#ff69b4; font-size: 2rem;">Rohim ❤️</span>
+                </p>
+                <div style="margin-top: 2rem; font-size: 4rem;">🌠✨🌠</div>
+            </div>
+        </div>
+    </section>
 
-<!-- ===== MESSAGE ===== -->
-<section>
-  <h1>For You 💌</h1>
-  <p>
-    You are the most beautiful part of my life...  
-    Every moment with you feels like magic ✨  
-    I don't just love you... I feel lucky to have you.  
-  </p>
-</section>
+    <!-- FINAL CELEBRATION -->
+    <section id="celebration" style="height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; background: #0a001f; overflow: hidden;">
+        <canvas id="fireworks-canvas"></canvas>
+        
+        <div style="text-align: center; z-index: 10; position: relative;">
+            <div style="font-size: 1.8rem; letter-spacing: 6px; color: #00f7ff; margin-bottom: 1rem;">🎉 THE GRAND FINALE 🎉</div>
+            <h1 class="final-message" id="final-text">
+                Happy Birthday, Tanjila Sarkar!<br>
+                You are my greatest adventure,<br>
+                my softest dream,<br>
+                and my brightest forever.
+            </h1>
+            
+            <div onclick="launchFireworks()" 
+                 class="inline-flex mt-10 items-center gap-3 bg-white/10 hover:bg-white/30 px-10 py-5 rounded-3xl text-2xl cursor-pointer backdrop-blur-md">
+                <span>Launch more fireworks for my love</span>
+                <span style="font-size: 2.5rem;">🚀</span>
+            </div>
+            
+            <p style="margin-top: 4rem; font-size: 1.3rem; max-width: 500px; margin-left: auto; margin-right: auto; opacity: 0.9;">
+                May this year bring you as much joy as you bring to my life every single day.
+            </p>
+        </div>
+    </section>
 
-<!-- ===== SURPRISE ===== -->
-<section>
-  <h1>Click for Surprise 🎁</h1>
-  <button onclick="reveal()">Reveal</button>
-  <p id="secret" style="display:none; margin-top:20px;">
-    I love you more than anything in this world ❤️  
-  </p>
-</section>
-
-<!-- ===== FINAL ===== -->
-<section>
-  <h1>Final Message 💖</h1>
-  <p class="final">
-    On this special day, I just want to say...  
-    You are my happiness, my peace, my everything.  
-    Happy Birthday, my love ❤️  
-  </p>
-</section>
-
-<script>
-/* ===== TYPING EFFECT ===== */
-const text = "You are my moon in the darkest night 🌙";
-let i = 0;
-function typing(){
-  if(i < text.length){
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 50);
-  }
-}
-typing();
-
-/* ===== MUSIC ===== */
-const music = document.getElementById("music");
-function toggleMusic(){
-  if(music.paused){
-    music.play();
-  }else{
-    music.pause();
-  }
-}
-
-/* ===== HEART CLICK EFFECT ===== */
-document.addEventListener("click", function(e){
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = e.clientX + "px";
-  heart.style.top = e.clientY + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(()=>heart.remove(),5000);
-});
-
-/* ===== REVEAL ===== */
-function reveal(){
-  document.getElementById("secret").style.display="block";
-}
-
-/* ===== FIREWORKS ===== */
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-function createFirework(){
-  for(let i=0;i<50;i++){
-    particles.push({
-      x: canvas.width/2,
-      y: canvas.height/2,
-      dx:(Math.random()-0.5)*5,
-      dy:(Math.random()-0.5)*5,
-      life:100
-    });
-  }
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach((p,index)=>{
-    p.x+=p.dx;
-    p.y+=p.dy;
-    p.life--;
-
-    ctx.fillStyle="pink";
-    ctx.fillRect(p.x,p.y,2,2);
-
-    if(p.life<=0){
-      particles.splice(index,1);
-    }
-  });
-
-  requestAnimationFrame(animate);
-}
-
-setInterval(createFirework,2000);
-animate();
-</script>
-
+    <script>
+        // ==================== TAILWIND NOT USED - PURE VANILLA FOR ZERO EXTERNAL DEPENDENCIES ====================
+        // Everything is self-contained except the music MP3 (free test track) and placeholder images
+        
+        // Canvas for background stars + floating hearts
+        let bgCanvas, bgCtx;
+        let particles = [];
+        let hearts = [];
+        
+        class Star {
+            constructor() {
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * window.innerHeight;
+                this.size = Math.random() * 3 + 1;
+                this.speed = Math.random() * 0.5 + 0.2;
+                this.alpha = Math.random();
+            }
+            update() {
+                this.alpha = Math.sin(Date.now() / 300 * this.speed) * 0.5 + 0.5;
+            }
+            draw() {
+                bgCtx.globalAlpha = this.alpha;
+                bgCtx.fillStyle = '#fff';
+                bgCtx.fillRect(this.x, this.y, this.size, this.size);
+            }
+        }
+        
+        // Floating hearts on background
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = ['💖', '💗', '💝', '💘'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.bottom = '-50px';
+            heart.style.fontSize = (Math.random() * 1.8 + 1.8) + 'rem';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.opacity = Math.random() * 0.8 + 0.4;
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        
+        // Initialize background canvas
+        function initBackgroundCanvas() {
+            bgCanvas = document.getElementById('bg-canvas');
+            bgCtx = bgCanvas.getContext('2d');
+            
+            function resizeCanvas() {
+                bgCanvas.width = window.innerWidth;
+                bgCanvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            // Create stars
+            for (let i = 0; i < 280; i++) {
+                particles.push(new Star());
+            }
+            
+            // Animation loop
+            function animateBackground() {
+                bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+                
+                // Stars
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                    particles[i].draw();
+                }
+                
+                requestAnimationFrame(animateBackground);
+            }
+            animateBackground();
+            
+            // Occasional floating hearts in background
+            setInterval(() => {
+                if (Math.random() > 0.4) createFloatingHeart();
+            }, 380);
+        }
+        
+        // Typing effect
+        function typeWriter(element, text, speed = 70, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i) === ' ' ? '&nbsp;' : text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) callback();
+            }
+            type();
+        }
+        
+        // Music player
+        let audio;
+        function initMusic() {
+            audio = document.getElementById('bg-music');
+            const playBtn = document.getElementById('play-btn');
+            const muteBtn = document.getElementById('mute-btn');
+            
+            // Try to autoplay (modern browsers require interaction, so fallback to click)
+            audio.volume = 0.4;
+            
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().catch(() => {});
+                    playBtn.innerHTML = '❚❚';
+                    muteBtn.style.display = 'block';
+                } else {
+                    audio.pause();
+                    playBtn.innerHTML = '▶️';
+                    muteBtn.style.display = 'none';
+                }
+            });
+            
+            muteBtn.addEventListener('click', () => {
+                if (audio.muted) {
+                    audio.muted = false;
+                    muteBtn.innerHTML = '🔇';
+                } else {
+                    audio.muted = true;
+                    muteBtn.innerHTML = '🔊';
+                }
+            });
+            
+            // Auto-play attempt after first user interaction anywhere
+            document.documentElement.addEventListener('click', () => {
+                if (audio.paused && !audio.muted) {
+                    audio.play().catch(() => {});
+                }
+            }, { once: true });
+        }
+        
+        // Gallery (carousel) with romantic placeholder images
+        const galleryImages = [
+            { url: 'https://picsum.photos/id/1015/900/600', caption: 'The night we first kissed under the stars' },
+            { url: 'https://picsum.photos/id/1005/900/600', caption: 'Our magical moonlit walk' },
+            { url: 'https://picsum.photos/id/133/900/600', caption: 'You, my favorite view' },
+            { url: 'https://picsum.photos/id/1016/900/600', caption: 'Dancing in the rain together' },
+            { url: 'https://picsum.photos/id/1009/900/600', caption: 'Forever starts here ❤️' },
+            { url: 'https://picsum.photos/id/201/900/600', caption: 'My heart belongs to you' }
+        ];
+        
+        function createGallery() {
+            const carousel = document.getElementById('carousel');
+            galleryImages.forEach(img => {
+                const cardHTML = `
+                <div class="gallery-card">
+                    <img src="${img.url}" alt="Memory" style="width:100%; height:260px; object-fit:cover;">
+                    <div style="padding: 1.2rem 1rem; text-align:center; font-size:1.1rem; color:#ffd700;">
+                        ${img.caption}
+                    </div>
+                </div>`;
+                carousel.innerHTML += cardHTML;
+            });
+        }
+        
+        function nextSlide() {
+            const carousel = document.getElementById('carousel');
+            carousel.scrollBy({ left: 340, behavior: 'smooth' });
+        }
+        
+        function prevSlide() {
+            const carousel = document.getElementById('carousel');
+            carousel.scrollBy({ left: -340, behavior: 'smooth' });
+        }
+        
+        // Create burst of hearts on click or tap
+        function createHearts(count) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.textContent = '💖';
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.bottom = '20px';
+                    heart.style.fontSize = '2.5rem';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 8);
+            }
+        }
+        
+        // Fireworks Canvas (full celebration)
+        let fireworksCanvas, fwCtx;
+        let fireworks = [];
+        let particlesFW = [];
+        
+        class Firework {
+            constructor() {
+                this.x = Math.random() * fireworksCanvas.width;
+                this.y = fireworksCanvas.height;
+                this.sx = this.x;
+                this.sy = this.y;
+                this.targetY = Math.random() * (fireworksCanvas.height * 0.4);
+                this.speed = 6;
+                this.hue = Math.random() * 360;
+                this.exploded = false;
+            }
+            update() {
+                if (!this.exploded) {
+                    this.y -= this.speed;
+                    this.speed *= 0.98;
+                    if (this.y <= this.targetY) {
+                        this.exploded = true;
+                        this.explode();
+                    }
+                }
+            }
+            explode() {
+                const particleCount = 110;
+                for (let i = 0; i < particleCount; i++) {
+                    particlesFW.push({
+                        x: this.x,
+                        y: this.y,
+                        vx: Math.random() * 12 - 6,
+                        vy: Math.random() * 12 - 8,
+                        size: Math.random() * 6 + 2,
+                        hue: this.hue + Math.random() * 40 - 20,
+                        alpha: 1,
+                        life: 120
+                    });
+                }
+                // Extra sparkle
+                createHearts(12);
+            }
+            draw() {
+                if (!this.exploded) {
+                    fwCtx.save();
+                    fwCtx.shadowBlur = 20;
+                    fwCtx.shadowColor = `hsl(${this.hue}, 100%, 75%)`;
+                    fwCtx.fillStyle = `hsl(${this.hue}, 100%, 85%)`;
+                    fwCtx.fillRect(this.x - 3, this.y - 3, 6, 22);
+                    fwCtx.restore();
+                }
+            }
+        }
+        
+        function initFireworks() {
+            fireworksCanvas = document.getElementById('fireworks-canvas');
+            fwCtx = fireworksCanvas.getContext('2d');
+            
+            function resizeFW() {
+                fireworksCanvas.width = window.innerWidth;
+                fireworksCanvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeFW);
+            resizeFW();
+            
+            function animateFireworks() {
+                fwCtx.fillStyle = 'rgba(10, 0, 31, 0.18)';
+                fwCtx.fillRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+                
+                // Update fireworks
+                for (let i = fireworks.length - 1; i >= 0; i--) {
+                    fireworks[i].update();
+                    fireworks[i].draw();
+                    if (fireworks[i].exploded && particlesFW.length === 0) fireworks.splice(i, 1);
+                }
+                
+                // Update particles
+                for (let i = particlesFW.length - 1; i >= 0; i--) {
+                    const p = particlesFW[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.18; // gravity
+                    p.alpha -= 0.018;
+                    p.life--;
+                    
+                    fwCtx.save();
+                    fwCtx.globalAlpha = p.alpha;
+                    fwCtx.shadowBlur = 15;
+                    fwCtx.shadowColor = `hsl(${p.hue}, 100%, 85%)`;
+                    fwCtx.fillStyle = `hsl(${p.hue}, 100%, 90%)`;
+                    fwCtx.fillRect(p.x, p.y, p.size, p.size);
+                    fwCtx.restore();
+                    
+                    if (p.life <= 0) particlesFW.splice(i, 1);
+                }
+                
+                // Random new fireworks
+                if (Math.random() < 0.12 && fireworks.length < 8) {
+                    fireworks.push(new Firework());
+                }
+                
+                requestAnimationFrame(animateFireworks);
+            }
+            animateFireworks();
+        }
+        
+        function launchFireworks() {
+            // Burst of 8 fireworks
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    fireworks.push(new Firework());
+                }, i * 90);
+            }
+            createHearts(40);
+        }
+        
+        // Reveal surprise message + trigger fireworks
+        function revealSurprise() {
+            const hidden = document.getElementById('hidden-message');
+            hidden.style.display = 'block';
+            hidden.style.animation = 'fadeInScale 1s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+            
+            // Trigger massive fireworks
+            document.getElementById('fireworks-canvas').style.display = 'block';
+            launchFireworks();
+            
+            // Scroll to celebration automatically after 2 seconds
+            setTimeout(() => {
+                document.getElementById('celebration').scrollIntoView({ behavior: 'smooth' });
+            }, 2200);
+        }
+        
+        // Mobile rotate notice
+        function handleOrientation() {
+            const notice = document.getElementById('rotate-notice');
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            function checkOrientation() {
+                if (isMobile && window.innerWidth < window.innerHeight) {
+                    notice.style.display = 'flex';
+                } else {
+                    notice.style.display = 'none';
+                }
+            }
+            
+            window.addEventListener('resize', checkOrientation);
+            window.addEventListener('orientationchange', checkOrientation);
+            checkOrientation();
+        }
+        
+        // Smooth scroll helper
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Main initialization
+        function initializeWebsite() {
+            console.log('%c🌙 Happy Birthday Tanjila Sarkar! The magic is ready ✨', 'color:#ff69b4; font-size:18px; font-family:Dancing Script');
+            
+            initBackgroundCanvas();
+            initMusic();
+            createGallery();
+            initFireworks();
+            handleOrientation();
+            
+            // Typing effect in hero
+            const typingEl = document.getElementById('typing-text');
+            const fullText = "Happy Birthday, my beautiful moon 🌙❤️";
+            setTimeout(() => {
+                typeWriter(typingEl, fullText, 65, () => {
+                    // After typing, add cursor
+                    typingEl.innerHTML += '<span class="cursor">|</span>';
+                });
+            }, 1100);
+            
+            // Click anywhere to spawn hearts (interactive)
+            document.addEventListener('click', (e) => {
+                if (e.target.tagName === 'CANVAS') return;
+                createHearts(8);
+            });
+            
+            console.log('🎉 Website fully loaded and ready to blow her mind!');
+        }
+        
+        // Start everything
+        window.onload = initializeWebsite;
+    </script>
 </body>
 </html>
